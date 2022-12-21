@@ -1,6 +1,6 @@
 package kz.satbayev.university.rest;
 
-import kz.satbayev.university.dto.AdminUserDto;
+import kz.satbayev.university.dto.UserDto;
 import kz.satbayev.university.model.User;
 import kz.satbayev.university.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,25 +14,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value = "/api/v1/admin/")
-public class AdminRestControllerV1 {
-
+@RequestMapping(value = "/api/v1/users/")
+public class UserRestController {
     private final UserService userService;
 
     @Autowired
-    public AdminRestControllerV1(UserService userService) {
+    public UserRestController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping(value = "users/{id}")
-    public ResponseEntity<AdminUserDto> getUserById(@PathVariable(name = "id") Long id) {
+    @GetMapping(value = "{id}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id") Long id){
         User user = userService.findById(id);
 
-        if (user == null) {
+        if(user == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        AdminUserDto result = AdminUserDto.fromUser(user);
+        UserDto result = UserDto.fromUser(user);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
