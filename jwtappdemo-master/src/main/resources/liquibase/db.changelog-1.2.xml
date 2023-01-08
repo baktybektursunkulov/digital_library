@@ -34,4 +34,20 @@
 
         </createTable>
     </changeSet>
+    <!-- changeSet by Baktybek-->
+    <changeSet id="1.0.7" author="baktybek">
+        <createTable tableName="direction">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN" defaultValueBoolean="false" >
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
