@@ -1,5 +1,6 @@
 package kz.satbayev.university.service.impl;
 
+import io.minio.MinioClient;
 import kz.satbayev.university.model.Role;
 import kz.satbayev.university.model.Status;
 import kz.satbayev.university.model.User;
