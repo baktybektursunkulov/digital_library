@@ -71,14 +71,13 @@ public class MinioService {
         }
         return FileDto.builder()
                 .title(request.getTitle())
-                .description(request.getDescription())
                 .size(request.getFile().getSize())
                 .url(getPreSignedUrl(request.getFile().getOriginalFilename()))
                 .filename(request.getFile().getOriginalFilename())
                 .build();
     }
 
-    private String getPreSignedUrl(String filename) {
+    public String getPreSignedUrl(String filename) {
         return "http://localhost:8075/file/".concat(filename);
     }
 
